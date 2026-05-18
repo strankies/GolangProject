@@ -1,0 +1,7 @@
+*.md
+.git
+.vscode/
+.idea/
+*.exe
+*.test
+*.out
