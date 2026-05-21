@@ -8,19 +8,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
+var users = []models.User{
+	{ID: "1", Username: "user1", Email: "user1@gmail.com"},
+	{ID: "2", Username: "user2", Email: "user2@gmail.com"},
+}
+
 func GetUsers(w http.ResponseWriter, r *http.Request) {
-	users := []models.User{
-		{
-			ID:       "1",
-			Username: "user1",
-			Email:    "user1@gmail.com",
-		},
-		{
-			ID:       "2",
-			Username: "user2",
-			Email:    "user2@gmail.com",
-		},
-	}
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(users)
@@ -30,11 +23,6 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 func GetUserByID(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
-
-	users := []models.User{
-		{ID: "1", Username: "user1", Email: "user1@gmail.com"},
-		{ID: "2", Username: "user2", Email: "user2@gmail.com"},
-	}
 
 	for _, user := range users {
 		if user.ID == id {
